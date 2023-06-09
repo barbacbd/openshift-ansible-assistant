@@ -11,14 +11,10 @@ distribution_dict:
     filters:
       name: "RHEL-{{ distribution_version }}*Hourly*"
       architecture: "x86_64"
-#aws_instance_type: "m4.large"
-#aws_key_name: "{{ lookup('env', 'OI_AWS_KEY_NAME') | default(lookup('env', 'USER'), true) }}"
-#aws_region: "{{ cluster_metadata.aws.region | default('us-east-1') }}"
-#aws_volumes:
-#  - device_name: /dev/sda1
-#    volume_size: 120
-#    volume_type: gp2
-#    delete_on_termination: true
-#aws_zone: "{{ aws_region }}a"
 
 azure_resource_group: "{{ cluster_metadata.infraID | default(lookup('env', 'USER'), true) }}-rg"
+azure_profile: "{{ lookup('file', '~/.azure/osServicePrincipal.json') | default(lookup('file', lookup('env', 'AZURE_PROFILE')), true) | from_json }}"
+azure_client_id: "{{ azure_profile['clientId'] }}"
+azure_subscription_id: "{{ azure_profile['subscriptionId'] }}"
+azure_tenant_id: "{{ azure_profile['tenantId'] }}"
+azure_secret: "{{ azure_profile['clientSecret'] }}"

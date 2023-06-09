@@ -2,12 +2,16 @@
 - name: Retrieve platform VM list
   azure.azcollection.azure_rm_virtualmachine_info:
     resource_group: "{{ azure_resource_group }}"
+    client_id: "{{ azure_client_id }}"
+    subscription_id: "{{ azure_subscription_id }}"
+    tenant: "{{ azure_tenant_id }}"
+    secret: "{{ azure_secret }}"
   register: azure_vms
   run_once: true
 
 - name: Set azure vm to most recent image
   set_fact:
-    azure_vm: "{{ azure_vms.vms[-1].id }}"
+    azure_vm: "{{ azure_vms.vms[-1].name }}"
   run_once: true
 
 - name: Create machineset_name
@@ -15,7 +19,7 @@
     machineset_name: "{{ machineset_obj.metadata.name ~ '-' ~ distribution ~ '-' ~ distribution_version }}"
 
 # stop the playbook here
-- ansible.builtin.meta: end_play
+#- ansible.builtin.meta: end_play
 
 - name: Update machineset definition
   set_fact:
