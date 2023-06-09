@@ -1,0 +1,20 @@
+---
+distribution_dict:
+  centos:
+    username: "centos"
+    owners: "679593333241"
+    filters:
+      product-code: "aw0evgkw8e5c1q413zgy5pjce"  # CentOS-7 x86_64
+  rhel:
+    username: "{{ lookup('env', 'USER') }}"
+    owners: "309956199498"  # Red Hat, Inc.
+    filters:
+      name: "RHEL-{{ distribution_version }}*Hourly*"
+      architecture: "x86_64"
+
+azure_resource_group: "{{ cluster_metadata.infraID | default(lookup('env', 'USER'), true) }}-rg"
+azure_profile: "{{ lookup('file', '~/.azure/osServicePrincipal.json') | default(lookup('file', lookup('env', 'AZURE_PROFILE')), true) | from_json }}"
+azure_client_id: "{{ azure_profile['clientId'] }}"
+azure_subscription_id: "{{ azure_profile['subscriptionId'] }}"
+azure_tenant_id: "{{ azure_profile['tenantId'] }}"
+azure_secret: "{{ azure_profile['clientSecret'] }}"
