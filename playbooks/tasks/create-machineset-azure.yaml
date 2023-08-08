@@ -37,12 +37,15 @@
           metadata:
             labels:
               machine.openshift.io/cluster-api-machineset: "{{ machineset_name }}"
-#          spec:
-#            providerSpec:
-#              value:
-#                ami:
-#                  id: "{{ aws_ami }}"
-#                keyName: "{{ aws_key_name }}"
+          spec:
+            providerSpec:
+              value:
+                image:
+                  offer: RHEL
+                  resourceID: ""
+                  publisher: RedHat
+                  sku: 8-lvm-gen2
+                  version: latest
 
 - name: Import machineset definition
   command: >

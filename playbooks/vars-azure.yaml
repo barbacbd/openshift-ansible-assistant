@@ -13,7 +13,8 @@ distribution_dict:
       architecture: "x86_64"
 
 azure_resource_group: "{{ cluster_metadata.infraID | default(lookup('env', 'USER'), true) }}-rg"
-azure_profile: "{{ lookup('file', '~/.azure/osServicePrincipal.json') | default(lookup('file', lookup('env', 'AZURE_PROFILE')), true) | from_json }}"
+azure_profile: "{{ lookup('file', '~/.azure/osServicePrincipal.json') }}"
+#azure_profile: "{{ lookup('file', lookup('env', 'AZURE_PROFILE')) | default(lookup('file', '~/.azure/osServicePrincipal.json'), true) | from_json }}"
 azure_client_id: "{{ azure_profile['clientId'] }}"
 azure_subscription_id: "{{ azure_profile['subscriptionId'] }}"
 azure_tenant_id: "{{ azure_profile['tenantId'] }}"
