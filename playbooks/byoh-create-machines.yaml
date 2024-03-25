@@ -7,7 +7,7 @@
   vars:
     asset_dir: "."
     distribution: "{{ lookup('env', 'OI_DISTRIBUTION') | default('rhel', true) }}"
-    distribution_version: "{{ lookup('env', 'OI_DISTRIBUTION_VERSION') | default('8.5', true) }}"
+    distribution_version: "{{ lookup('env', 'OI_DISTRIBUTION_VERSION') | default('8.6', true) }}"
     inventory_dir: "{{ asset_dir }}/byoh"
     kubeconfig: "{{ asset_dir }}/auth/kubeconfig"
     ssh_bastion: "{{ lookup('env', 'OI_SSH_BASTION') | default('', true) }}"
