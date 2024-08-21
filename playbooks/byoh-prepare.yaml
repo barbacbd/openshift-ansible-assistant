@@ -8,7 +8,7 @@
   vars:
     asset_dir: "."
     distribution: "{{ lookup('env', 'OI_DISTRIBUTION') | default('rhel', true) }}"
-    distribution_version: "{{ lookup('env', 'OI_DISTRIBUTION_VERSION') | default('8.6', true) }}"
+    distribution_version: "{{ lookup('env', 'OI_DISTRIBUTION_VERSION') | default('9.4', true) }}"
     fips_enable: "{{ lookup('env', 'OI_FIPS_ENABLE') | default(false, true) }}"
     kubeconfig: "{{ asset_dir }}/auth/kubeconfig"
     openshift_mirror: "{{ lookup('file', '~/oi/openshift-mirror.json' ) | from_json }}"

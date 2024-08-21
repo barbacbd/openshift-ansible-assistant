@@ -1,0 +1,23 @@
+[rhel-9-for-x86_64-baseos-rpms]
+name = Red Hat Enterprise Linux 9 for x86_64 - BaseOS (RPMs)
+baseurl = https://mirror2.openshift.com/enterprise/reposync/ci-deps/rhel-9-baseos-rpms/
+username = {{ mirror_username }}
+password = {{ mirror_password }}
+gpgcheck = 0
+sslverify = 0
+enabled = 1
+metadata_expire = 86400
+enabled_metadata = 1
+module_hotfixes = 1
+
+[rhel-9-for-x86_64-appstream-rpms]
+name = Red Hat Enterprise Linux 9 for x86_64 - AppStream (RPMs)
+baseurl = https://mirror2.openshift.com/enterprise/reposync/ci-deps/rhel-9-appstream-rpms/
+username = {{ mirror_username }}
+password = {{ mirror_password }}
+gpgcheck = 0
+sslverify = 0
+enabled = 1
+metadata_expire = 86400
+enabled_metadata = 1
+module_hotfixes = 1
